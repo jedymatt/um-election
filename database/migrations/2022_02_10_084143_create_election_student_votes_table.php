@@ -15,7 +15,7 @@ return new class extends Migration
     {
         Schema::create('election_student_votes', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('election_student_id')->constrained();
+            $table->foreignId('election_student_id');
             $table->foreignId('candidate_id')->constrained();
             // $table->timestamps();
         });
