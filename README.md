@@ -21,9 +21,13 @@ Go to your user root directory and add this line in file named `.bash_aliases` (
 alias sail='[ -f sail ] && bash sail || bash vendor/bin/sail'
 ```
 
-### Docker Development
+### Composer Install
 
 ```shell
+
+composer install
+
+# or this if you use docker
 docker run --rm \
     -u "$(id -u):$(id -g)" \
     -v $(pwd):/var/www/html \
