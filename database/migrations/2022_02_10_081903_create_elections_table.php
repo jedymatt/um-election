@@ -22,13 +22,7 @@ return new class extends Migration
             $table->dateTime('end_at');
             $table->string('school_year');
             $table->boolean('is_open');
-            $table->foreignId('department_id');
-
-
-
-
-
-            //$table->timestamps();
+            $table->timestamps();
         });
     }
 

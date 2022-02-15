@@ -6,10 +6,12 @@ UM Election Web Application
 
 ### Setup Environment Variables
 
+Open terminal in the project directory and run this command to create .env file:
+
 ```shell
 cp .env.example .env
 
-# or this if you intend to use devcontainer
+# or use this if you intend to use devcontainer
 cp .env.development .env
 ```
 
@@ -22,6 +24,8 @@ alias sail='[ -f sail ] && bash sail || bash vendor/bin/sail'
 ```
 
 ### Docker Development
+
+Open terminal in the project directory and run:
 
 ```shell
 docker run --rm \
