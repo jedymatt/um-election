@@ -22,6 +22,7 @@ class RedirectIfAuthenticated
         if(in_array('admin', $guards, true) && Auth::guard('admin')->check()) {
             return redirect(route('admin.dashboard'));
         }
+
         $guards = empty($guards) ? [null] : $guards;
 
         foreach ($guards as $guard) {
