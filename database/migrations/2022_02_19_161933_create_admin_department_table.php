@@ -13,9 +13,10 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('roles', function (Blueprint $table) {
+        Schema::create('admin_department', function (Blueprint $table) {
             $table->id();
-            $table->string('name')->unique();
+            $table->foreignId('admin_id')->constrained();
+            $table->foreignId('department_id')->constrained();
             // $table->timestamps();
         });
     }
@@ -27,6 +28,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('roles');
+        Schema::dropIfExists('admin_department');
     }
 };
