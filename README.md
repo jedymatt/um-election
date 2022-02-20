@@ -1,4 +1,4 @@
-# um-election-app
+# um-election
 
 UM Election Web Application
 
