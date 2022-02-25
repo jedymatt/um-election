@@ -11,9 +11,6 @@
 
 
                 <div class="p-6 bg-white border-b border-gray-200">
-                    <!-- Validation Errors -->
-                    <x-auth-validation-errors class="mb-4" :errors="$errors"/>
-
                     <form action="{{ route('admin.departments.store') }}" method="post">
                     @csrf
                     <!-- Name -->
@@ -21,10 +18,13 @@
                             <x-label for="name" :value="__('Department Name')"/>
                             <x-input id="name" class="block mt-1 w-full" type="text" name="name" :value="old('name')"
                                      required autofocus/>
+                            @error('name')
+                            <p class="text-sm text-red-600 py-2">{{ $message }}</p>
+                            @enderror
                         </div>
                         <div class="flex items-center justify-end mt-4">
                             <x-button class="ml-3">
-                                {{ __('Create') }}
+                                Create
                             </x-button>
                         </div>
                     </form>

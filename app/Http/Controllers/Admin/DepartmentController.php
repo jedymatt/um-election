@@ -18,7 +18,7 @@ class DepartmentController extends Controller
      *
      * @return Application|Factory|View
      */
-    public function index(): View|Factory|Application
+    public function index()
     {
         $departments = Department::orderBy('name')->get();
         return view('admin.departments.index', compact('departments'));
@@ -38,35 +38,35 @@ class DepartmentController extends Controller
      * Store a newly created resource in storage.
      *
      * @param StoreDepartmentRequest $request
-     * @return Application|Factory|View
+     * @return \Illuminate\Http\RedirectResponse
      */
     public function store(StoreDepartmentRequest $request)
     {
         Department::create($request->validated());
 
-        return redirect(route('admin.departments.index'));
+        return redirect()->route('admin.departments.index');
     }
 
     /**
      * Display the specified resource.
      *
      * @param Department $department
-     * @return Response
+     * @return Application|Factory|View
      */
     public function show(Department $department)
     {
-        return response(view('admin.departments.show', compact('department')));
+        return view('admin.departments.show', compact('department'));
     }
 
     /**
      * Show the form for editing the specified resource.
      *
      * @param Department $department
-     * @return Response
+     * @return Application|Factory|View
      */
     public function edit(Department $department)
     {
-        return response(view('admin.departments.edit', compact('department')));
+        return view('admin.departments.edit', compact('department'));
     }
 
     /**
@@ -74,25 +74,25 @@ class DepartmentController extends Controller
      *
      * @param UpdateDepartmentRequest $request
      * @param Department $department
-     * @return Response
+     * @return \Illuminate\Http\RedirectResponse
      */
     public function update(UpdateDepartmentRequest $request, Department $department)
     {
         $department->update($request->validated());
 
-        return response(route('admin.departments.index'));
+        return redirect()->route('admin.departments.index');
     }
 
     /**
      * Remove the specified resource from storage.
      *
      * @param Department $department
-     * @return Response
+     * @return \Illuminate\Http\RedirectResponse
      */
     public function destroy(Department $department)
     {
         $department->delete();
 
-        return redirect(route('admin.departments.index'));
+        return redirect()->route('admin.departments.index');
     }
 }
