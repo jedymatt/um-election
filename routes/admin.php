@@ -9,6 +9,7 @@ use App\Http\Controllers\Admin\Auth\PasswordResetLinkController;
 use App\Http\Controllers\Admin\Auth\RegisteredUserController;
 use App\Http\Controllers\Admin\Auth\VerifyEmailController;
 use App\Http\Controllers\Admin\DashboardController;
+use App\Http\Controllers\Admin\DepartmentController;
 use Illuminate\Support\Facades\Route;
 
 Route::prefix('admin')->name('admin.')->middleware('user.forbidden')->group(function () {
@@ -72,4 +73,6 @@ Route::prefix('admin')->name('admin.')->middleware('user.forbidden')->group(func
     Route::post('/logout', [AuthenticatedSessionController::class, 'destroy'])
         ->middleware('auth:admin')
         ->name('logout');
+
+    Route::resource('/departments', DepartmentController::class);
 });
