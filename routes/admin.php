@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Admin\AdminController;
 use App\Http\Controllers\Admin\Auth\AuthenticatedSessionController;
 use App\Http\Controllers\Admin\Auth\ConfirmablePasswordController;
 use App\Http\Controllers\Admin\Auth\EmailVerificationNotificationController;
@@ -75,4 +76,5 @@ Route::prefix('admin')->name('admin.')->middleware('user.forbidden')->group(func
         ->name('logout');
 
     Route::resource('/departments', DepartmentController::class);
+    Route::resource('/admins', AdminController::class);
 });

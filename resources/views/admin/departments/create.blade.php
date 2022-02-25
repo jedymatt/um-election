@@ -12,12 +12,11 @@
 
                 <div class="p-6 bg-white border-b border-gray-200">
                     <form action="{{ route('admin.departments.store') }}" method="post">
-                    @csrf
-                    <!-- Name -->
+                        @csrf
+                        <!-- Name -->
                         <div>
-                            <x-label for="name" :value="__('Department Name')"/>
-                            <x-input id="name" class="block mt-1 w-full" type="text" name="name" :value="old('name')"
-                                     required autofocus/>
+                            <x-label for="name" :value="__('Department Name')" />
+                            <x-input id="name" class="block mt-1 w-full" type="text" name="name" :value="old('name')" required autofocus />
                             @error('name')
                             <p class="text-sm text-red-600 py-2">{{ $message }}</p>
                             @enderror
