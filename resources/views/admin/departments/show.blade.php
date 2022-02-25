@@ -14,12 +14,12 @@
                     <!-- Name -->
                     <div>
                         <x-label for="name" :value="__('Department Name')"/>
-                        <div class="block mt-1 w-full p-2 rounded bg-gray-100">
+                        <div class="block mt-1 w-full p-3 rounded bg-gray-100">
                             {{ $department->name }}
                         </div>
                     </div>
                     <div class="flex items-center justify-end mt-4">
-                        <a class="underline text-blue-500"
+                        <a class="text-blue-500 hover:text-blue-900 no-underline hover:underline"
                             href="{{ route('admin.departments.edit', $department) }}">Edit Department</a>
                     </div>
                 </div>

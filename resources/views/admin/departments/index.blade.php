@@ -50,8 +50,7 @@
 
                                                     <form action="{{ route('admin.departments.destroy', $department) }}"
                                                           method="post"
-                                                          class="inline-block"
-                                                          onclick="return confirm('Are you sure you want to delete?')">
+                                                          class="inline-block">
                                                         @method('delete')
                                                         @csrf
                                                         <button type="submit"
