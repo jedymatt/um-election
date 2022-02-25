@@ -44,7 +44,7 @@ class DepartmentController extends Controller
     {
         Department::create($request->validated());
 
-        return redirect()->route('admin.departments.index');
+        return redirect(route('admin.departments.index'));
     }
 
     /**
@@ -55,7 +55,7 @@ class DepartmentController extends Controller
      */
     public function show(Department $department)
     {
-        //
+        return response(view('admin.departments.show', compact('department')));
     }
 
     /**
@@ -66,7 +66,7 @@ class DepartmentController extends Controller
      */
     public function edit(Department $department)
     {
-        //
+        return response(view('admin.departments.edit', compact('department')));
     }
 
     /**
@@ -78,7 +78,9 @@ class DepartmentController extends Controller
      */
     public function update(UpdateDepartmentRequest $request, Department $department)
     {
-        //
+        $department->update($request->validated());
+
+        return response(route('admin.departments.index'));
     }
 
     /**
@@ -89,6 +91,8 @@ class DepartmentController extends Controller
      */
     public function destroy(Department $department)
     {
-        //
+        $department->delete();
+
+        return redirect(route('admin.departments.index'));
     }
 }

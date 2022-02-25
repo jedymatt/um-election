@@ -14,21 +14,32 @@
                     </div>
                     <table class="table-auto rounded-md overflow-hidden shadow-lg">
                         <thead class="bg-gray-100">
-                        <tr>
-                            <th>Name</th>
-                            <th>Actions</th>
-                        </tr>
+                            <tr>
+                                <th>Name</th>
+                                <th>Actions</th>
+                            </tr>
                         </thead>
                         <tbody>
-                        @forelse($departments as $department)
-                            <tr>
-                                <td>{{$department->name}}</td>
-                            </tr>
-                        @empty
-                            <tr>
-                                <td>Empty Records</td>
-                            </tr>
-                        @endforelse
+                            @forelse($departments as $department)
+                                <tr>
+                                    <td>{{ $department->name }}</td>
+                                    <td>
+                                        <a href="{{ route('admin.departments.show', $department) }}">View</a>
+                                        <a href="{{ route('admin.departments.edit', $department) }}">Edit</a>
+                                        <form class="inline-block" method="POST"
+                                            action="{{ route('admin.departments.destroy', $department) }}"
+                                            onsubmit="return confirm('Are you sure?');">
+                                            @method('delete')
+                                            @csrf
+                                            <button type="submit">Delete</button>
+                                        </form>
+                                    </td>
+                                </tr>
+                            @empty
+                                <tr>
+                                    <td>Empty Records</td>
+                                </tr>
+                            @endforelse
                         </tbody>
                     </table>
                 </div>
