@@ -13,7 +13,7 @@ use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\DepartmentController;
 use Illuminate\Support\Facades\Route;
 
-Route::prefix('admin')->name('admin.')->middleware('user.forbidden')->group(function () {
+Route::prefix('admin')->name('admin.')->middleware(['admin'])->group(function () {
 
     Route::get('/', [DashboardController::class, 'index'])
         ->middleware('auth:admin');

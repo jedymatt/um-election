@@ -6,7 +6,7 @@ use Closure;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
-class ForbidUserAccessAdmin
+class Admin
 {
     /**
      * Handle an incoming request.
@@ -17,10 +17,10 @@ class ForbidUserAccessAdmin
      */
     public function handle(Request $request, Closure $next)
     {
-        if (Auth::guard('web')->check() && $request->is('admin*')) {
+        if (Auth::guard('web')->check() && $request->routeIs('admin.*')) {
             abort(403);
         }
-
+        \Auth::shouldUse('admin');
         return $next($request);
     }
 }
