@@ -16,7 +16,7 @@ class DepartmentSeeder extends Seeder
     public function run()
     {
         $departments = [
-            ['name' => 'Department of Arts and Science'],
+            ['name' => 'Department of Arts and Sciences'],
             ['name' => 'Department of Accounting Education'],
             ['name' => 'Department of Business Administration Education'],
             ['name' => 'Department of Teachers Education'],
