@@ -9,7 +9,9 @@ use App\Models\Admin;
 use Illuminate\Contracts\Foundation\Application;
 use Illuminate\Contracts\View\Factory;
 use Illuminate\Contracts\View\View;
-use Illuminate\Http\Response;
+use Illuminate\Http\RedirectResponse;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Http;
 
 class AdminController extends Controller
 {
@@ -33,7 +35,7 @@ class AdminController extends Controller
     /**
      * Show the form for creating a new resource.
      *
-     * @return Response
+     * @return Application|Factory|View
      */
     public function create()
     {
@@ -44,33 +46,35 @@ class AdminController extends Controller
      * Store a newly created resource in storage.
      *
      * @param StoreAdminRequest $request
-     * @return Response
+     * @return RedirectResponse
      */
     public function store(StoreAdminRequest $request)
     {
-        //
+        Admin::create($request->validated());
+
+        return redirect()->route('admin.admins.index');
     }
 
     /**
      * Display the specified resource.
      *
      * @param Admin $admin
-     * @return Response
+     * @return Application|Factory|View
      */
     public function show(Admin $admin)
     {
-        //
+        return \view('admin.admins.show', compact('admin'));
     }
 
     /**
      * Show the form for editing the specified resource.
      *
      * @param Admin $admin
-     * @return Response
+     * @return Application|Factory|View
      */
     public function edit(Admin $admin)
     {
-        //
+        return \view('admin.admins.edit', compact('admin'));
     }
 
     /**
@@ -78,22 +82,27 @@ class AdminController extends Controller
      *
      * @param UpdateAdminRequest $request
      * @param Admin $admin
-     * @return Response
+     * @return RedirectResponse
      */
     public function update(UpdateAdminRequest $request, Admin $admin)
     {
-        //
+        $admin->update($request->validated());
+
+        return redirect()->route('admin.admins.index');
     }
 
     /**
      * Remove the specified resource from storage.
      *
      * @param Admin $admin
-     * @return Response
+     * @return RedirectResponse
      */
     public function destroy(Admin $admin)
     {
-        //
+        abort_if(Auth::guard('admin')->id() == $admin->id, 403);
+        $admin->delete();
+
+        return redirect()->route('admin.admins.index');
     }
 
 }
