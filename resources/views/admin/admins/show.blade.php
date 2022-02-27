@@ -14,20 +14,23 @@
         {{--            </div>--}}
         {{--        </div>--}}
         {{--        --}}
-        <div class="grid md:grid-cols-3">
-            <div class="col-span-1 px-0">
-                Admin Information
-            </div>
-            <div class="col-span-2">
-                <div class="bg-white p-4 rounded-md shadow">
-                    <div>
-                        <x-label for="name" value="Full Name"/>
-                        <x-input class="mt-1 w-full" type="text" value="{{ $admin->name }}" id="name" name="name"/>
-                    </div>
-                    <div class="mt-4">
-                        <x-label for="email" value="Email"/>
-                        <x-input id="email" name="email" value="{{ $admin->email }}"
-                                 type="email" class="mt-1 w-full"/>
+        <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
+            <div class="grid md:grid-cols-3">
+                <div class="col-span-1 px-0">
+                    Admin Information
+                </div>
+                <div class="col-span-2">
+                    <div class="bg-white p-4 rounded-md shadow">
+                        <div>
+                            <x-label for="name" value="Full Name"/>
+                            <x-input class="mt-1 w-full" type="text" value="{{ $admin->name }}"
+                                     id="name" name="name" disabled/>
+                        </div>
+                        <div class="mt-4">
+                            <x-label for="email" value="Email"/>
+                            <x-input id="email" name="email" value="{{ $admin->email }}"
+                                     type="email" class="mt-1 w-full" disabled/>
+                        </div>
                     </div>
                 </div>
             </div>
