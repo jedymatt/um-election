@@ -10,7 +10,7 @@
 	"extensions": [
 		"onecentlin.laravel-extension-pack",
 		"bradlc.vscode-tailwindcss",
-		"bmewburn.vscode-intelephense-client"
+		"DEVSENSE.phptools-vscode"
 	],
 	"remoteUser": "sail",
 	// "forwardPorts": [],

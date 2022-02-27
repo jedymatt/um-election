@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Admin\AdminController;
 use App\Http\Controllers\Admin\Auth\AuthenticatedSessionController;
 use App\Http\Controllers\Admin\Auth\ConfirmablePasswordController;
 use App\Http\Controllers\Admin\Auth\EmailVerificationNotificationController;
@@ -12,7 +13,7 @@ use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\DepartmentController;
 use Illuminate\Support\Facades\Route;
 
-Route::prefix('admin')->name('admin.')->middleware('user.forbidden')->group(function () {
+Route::prefix('admin')->name('admin.')->group(function () {
 
     Route::get('/', [DashboardController::class, 'index'])
         ->middleware('auth:admin');
@@ -74,5 +75,8 @@ Route::prefix('admin')->name('admin.')->middleware('user.forbidden')->group(func
         ->middleware('auth:admin')
         ->name('logout');
 
-    Route::resource('/departments', DepartmentController::class);
+    Route::resource('/departments', DepartmentController::class)
+        ->middleware('auth:admin');
+    Route::resource('/admins', AdminController::class)
+        ->middleware('auth:admin');
 });
