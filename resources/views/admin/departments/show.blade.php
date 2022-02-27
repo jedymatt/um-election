@@ -14,9 +14,9 @@
                     <!-- Name -->
                     <div>
                         <x-label for="name" :value="__('Department Name')"/>
-                        <div class="block mt-1 w-full p-3 rounded bg-gray-100">
-                            {{ $department->name }}
-                        </div>
+
+                        <x-input id="name" name="name" type="text" :value="$department->name"
+                                 class="block mt-1 w-full" disabled/>
                     </div>
                     <div class="flex items-center justify-end mt-4">
                         <a class="text-blue-500 hover:text-blue-900 no-underline hover:underline"
