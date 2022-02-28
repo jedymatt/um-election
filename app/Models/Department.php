@@ -14,4 +14,12 @@ class Department extends Model
     protected $fillable = [
         'name',
     ];
+
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany
+     */
+    public function elections()
+    {
+        return $this->belongsToMany(Election::class);
+    }
 }

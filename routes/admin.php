@@ -1,5 +1,7 @@
 <?php
 
+namespace App\Http\Controllers\Admin;
+
 use App\Http\Controllers\Admin\AdminController;
 use App\Http\Controllers\Admin\Auth\AuthenticatedSessionController;
 use App\Http\Controllers\Admin\Auth\ConfirmablePasswordController;
@@ -11,6 +13,7 @@ use App\Http\Controllers\Admin\Auth\RegisteredUserController;
 use App\Http\Controllers\Admin\Auth\VerifyEmailController;
 use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\DepartmentController;
+use App\Http\Controllers\Admin\ElectionController;
 use Illuminate\Support\Facades\Route;
 
 Route::prefix('admin')->name('admin.')->group(function () {
@@ -76,7 +79,16 @@ Route::prefix('admin')->name('admin.')->group(function () {
         ->name('logout');
 
     Route::resource('/departments', DepartmentController::class)
+        ->only(['index', 'show'])
         ->middleware('auth:admin');
+
     Route::resource('/admins', AdminController::class)
         ->middleware('auth:admin');
+
+    Route::resource('/elections', ElectionController::class)
+        ->middleware('auth:admin');
+
+    Route::resource('/departments.elections', DepartmentElectionController::class)
+        ->middleware('auth:admin')
+        ->shallow();
 });

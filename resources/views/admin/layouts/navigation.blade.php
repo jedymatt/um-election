@@ -23,6 +23,10 @@
                                 :active="request()->routeIs('admin.admins.index')">
                         {{ __('Admins') }}
                     </x-nav-link>
+                    <x-nav-link :href="route('admin.admins.index')"
+                                :active="request()->routeIs('admin.elections.index')">
+                        {{ __('Elections') }}
+                    </x-nav-link>
                 </div>
             </div>
 
